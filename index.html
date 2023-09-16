@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>E-Commerce</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <header>
+        <h1 class="Logo">Logo</h1>
+        <nav class="navigation">
+            <div class="dropdown">
+                    <a href="#home" class="btnclick">HOME</a>
+                    <a href="#product" class="btnclick">PRODUCT</a>
+                    <a href="#contact" class="btnclick">CONTACT</a>
+                    <a href="#faq" class="btnclick">FAQ</a>
+        </nav>
+        <div class="dropdown">
+            <a href="#" class="dropbtn">
+                <div class="dropdown-content">
+                    <a href="#home" onclick="showProducts('HOME')">HOME</a>
+                    <a href="#product" onclick="showProducts('PRODUCT')">PRODUCT</a>
+                    <a href="#contact" onclick="showProducts('CONTACT')">CONTACT</a>
+                    <a href="#faq" onclick="showProducts('FAQ')">FAQ</a>
+                </div>
+                <ion-icon name="person-circle-outline" size="large"></ion-icon>
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="container" style="background-image: url('home.jpg');">
+            <div class="home-content">
+                <div class="home-text">
+                    <h1>Welcome to our store</h1>
+                    <p>Enjoy the online shopping experience with our best product collection!</p>
+                    <a href="#product" class="button-link">Lihat Produk</a>
+                </div>
+            </div>
+        </section>
+        
+
+        <section id="product" class="container">
+           
+            <div class="product-dropdown">
+                <ion-icon name="list-outline"class="dropbtn"size="large"></ion-icon> 
+                    <div class="product-dropdown-content">
+                        <a href="#" onclick="showProducts('all')">ALL</a>
+                        <a href="#" onclick="showProducts('tshirt')">T-shirt</a>
+                        <a href="#" onclick="showProducts('skincare')">Skincare</a>
+                        <a href="#" onclick="showProducts('muslimdress')">Muslim dress</a>
+                    </div>
+            </div>
+
+            <div id="tshirt-content" class="product-content">
+                <h2>T-shirt</h2>
+                <div class="product-item">
+                    <div class="product-card">
+                        <img src="baju1.jpg" alt="T-shirt">
+                    </div>
+                </div>
+            </div>
+            
+            <div id="skincare-content" class="product-content">
+                <h2>Skincare</h2>
+                <div class="product-item">
+                    <div class="product-card">
+                        <img src="skin1.JPG" alt="Skincare">
+                    </div>
+                </div>
+            </div>
+            
+            <div id="muslimdress-content" class="product-content">
+                <h2>Muslim Dress</h2>
+                <div class="product-item">
+                    <div class="product-card">
+                        <img src="muslim1.JPG" alt="Muslim Dress">
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="container">
+            <h1>Contact us</h1>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Nama: Gibel COK</h3>
+                    <p>Alamat: Jl. Contoh No. 123, Kota Contoh</p>
+                    <p>No. Telepon: 081462738467</p>
+                </div>
+                <button class="whatsapp-button" onclick="redirectToWhatsApp()" target="_blank">Hubungi via WhatsApp</button>
+            </div>
+        </section>
+
+        
+        <section id="faq" class="container">
+            <h1>FAQ</h1>
+            <div class="faq-content">
+                <div class="faq-item">
+                    <h2 class="faq-question">What payment methods do you accept?</h2>
+                    <p class="faq-answer">We accept major credit and debit cards, as well as PayPal.</p>
+                </div>
+                <div class="faq-item">
+                    <h2 class="faq-question">How can I track my order?</h2>
+                    <p class="faq-answer">You can track your order by logging into your account and visiting the order tracking page.</p>
+                </div>
+                <div class="faq-item">
+                    <h2 class="faq-question">What is your return policy?</h2>
+                    <p class="faq-answer">Our return policy allows for returns within 30 days of the purchase date. Please review our Return Policy page for more details.</p>
+                </div>
+            </div>
+        </section>
+             
+       
+    </main>
+
+</body>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<script>
+     function showAllProducts() {
+        showProducts('all');
+    }
+
+    function showProducts(category) {
+        const productContents = document.querySelectorAll('.product-content');
+
+        if (category === 'all') {
+            productContents.forEach(content => {
+                content.style.display = 'block';
+            });
+        } else {
+            productContents.forEach(content => {
+                content.style.display = 'none';
+            });
+            const selectedContent = document.getElementById(`${category}-content`);
+            if (selectedContent) {
+                selectedContent.style.display = 'block';
+            }
+        }
+    }
+    function redirectToWhatsApp() {
+        const phoneNumber = '081462738467'; 
+        const message = 'hello, I am interested in this product';
+
+        const whatsappLink = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
+        window.location.href = whatsappLink;
+    }
+</script>
+</html>
